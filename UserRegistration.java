@@ -38,11 +38,29 @@ public void lastName() {
 	    }
 	}
 	
+public void email() {
+	    System.out.println("Enter Email Id:");
+	    String email = Scan.nextLine();
+		
+	    Pattern emailPat = Pattern.compile("^([a-z]+[0-9a-z-!#$%+^&_.]){3,15}@[a-z0-9]{1,8}[.]([a-z]{2,4}).[a-z]{2,4}");
+	    Matcher emailMatch = emailPat.matcher(email);
+	    boolean emailVerification = emailMatch.find();
+	    
+	    if (emailVerification==false) {
+	    	System.out.println("Invalid Email Id!!");
+	    	email();
+	    }
+	    else {
+	    	System.out.println("Valid Email: "+ email);
+	    }
+	}
+	
 public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
 		user.firstName();
                 user.lastName();
-    }
+                user.email(); 
+}
 
 }
 
